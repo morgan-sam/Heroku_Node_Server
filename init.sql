@@ -1,0 +1,9 @@
+CREATE TABLE comments (
+    ID SERIAL PRIMARY KEY,
+    author VARCHAR(32) NOT NULL,
+    comment VARCHAR(255) NOT NULL,
+    time TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT NOW()
+);
+
+INSERT INTO comments (author, comment)
+VALUES  ('ADMIN', 'FIRST');
