@@ -24,6 +24,7 @@ const addComment = (request, response) => {
 	});
 };
 
+app.route('/').get(getComments);
 app.route('/comments').get(getComments).post(addComment);
 
 app.listen(process.env.PORT, () => {
