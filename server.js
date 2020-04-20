@@ -24,7 +24,10 @@ const addComment = (request, response) => {
 	});
 };
 
-app.route('/').get(getComments);
+app.get('/', (request, response) => {
+	response.json({ info: 'Hello this is my heroku server!' });
+});
+
 app.route('/comments').get(getComments).post(addComment);
 
 app.listen(process.env.PORT, () => {
