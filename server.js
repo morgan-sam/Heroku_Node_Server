@@ -25,7 +25,10 @@ const addComment = (request, response) => {
 };
 
 app.get('/', (request, response) => {
-	response.json({ info: 'Hello this is my heroku server!' });
+	pool.query('SELECT * FROM comments', (error, results) => {
+		if (error) throw error;
+		response.status(200).json(results.rows);
+	});
 });
 
 app.route('/comments').get(getComments).post(addComment);
