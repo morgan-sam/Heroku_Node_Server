@@ -34,5 +34,5 @@ app.get('/', (request, response) => {
 app.route('/comments').get(getComments).post(addComment);
 
 app.listen(process.env.PORT, () => {
-	console.log('Server Listening...\n');
+	console.log(`Server Listening on port ${process.env.PORT}\n`);
 });
