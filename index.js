@@ -20,24 +20,27 @@ function addForms() {
 	<label for="comment">Comment:</label><br>
 	<input type="text" id="comment" name="comment">
   	</form><br>`;
-	document.body.innerHTML += `<button type="button">Add comment</button><br><br>`;
+	document.body.innerHTML += `<button type="button" onclick="postComment()">Add comment</button><br><br>`;
 }
 
 async function postComment() {
 	const newComment = {
-		author: 'SNN_Bot',
-		comment: 'This is a test post'
+		author: document.getElementById('name').value,
+		comment: document.getElementById('comment').value
 	};
 
 	try {
-		const response = await fetch('https://socialnetworknode.herokuapp.com/comments', {
-			headers: {
-				Accept: 'application/json',
-				'Content-Type': 'application/json'
-			},
-			method: 'post',
-			body: JSON.stringify(newComment)
-		});
+		if (newComment.author && newComment.comment) {
+			const response = await fetch('https://socialnetworknode.herokuapp.com/comments', {
+				headers: {
+					Accept: 'application/json',
+					'Content-Type': 'application/json'
+				},
+				method: 'post',
+				body: JSON.stringify(newComment)
+			});
+			location.reload();
+		}
 	} catch (error) {
 		console.log(error);
 	}
