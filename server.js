@@ -30,4 +30,6 @@ app.listen(process.env.PORT || 5000, () => {
 
 app.route('/comments').get(getComments).post(addComment);
 
-console.log(pool.options);
+app.route('/', (request, response) => {
+	response.sendFile('index.html');
+});
