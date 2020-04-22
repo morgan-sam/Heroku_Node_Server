@@ -32,4 +32,5 @@ app.route('/comments').get(getComments).post(addComment);
 
 app.get('/', function(request, response) {
 	response.sendFile('./index.html', { root: __dirname });
+	response.sendFile('./index.js', { root: __dirname });
 });
