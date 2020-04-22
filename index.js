@@ -6,11 +6,13 @@ async function getComments() {
 
 async function displayComments() {
 	const comments = await getComments();
-	comments.forEach((el) => {
-		const jsDate = new Date(el.time).toString();
-		const formatDate = jsDate.split(' ').slice(0, 5).join(' ');
-		document.body.innerHTML += `${el.author}&emsp;${formatDate}:<br>${el.comment}<br><br>`;
-	});
+	if (comments) {
+		comments.forEach((el) => {
+			const jsDate = new Date(el.time).toString();
+			const formatDate = jsDate.split(' ').slice(0, 5).join(' ');
+			document.body.innerHTML += `${el.author}&emsp;${formatDate}:<br>${el.comment}<br><br>`;
+		});
+	}
 }
 
 function addForms() {
