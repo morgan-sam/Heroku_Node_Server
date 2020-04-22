@@ -24,18 +24,10 @@ const addComment = (request, response) => {
 	});
 };
 
-// app.route('/comments').get(getComments).post(addComment);
-
-app.listen(process.env.PORT, () => {
-	console.log(`Server Listening on port ${process.env.PORT}\n`);
+app.listen(process.env.PORT || 5000, () => {
+	console.log(`Server Listening on port ${process.env.PORT || 5000}\n`);
 });
 
-// app.get('/', (request, response) => {
-// 	response.status(200).json('This is the server root.');
-// });
-
-// app.get('/comments', (request, response) => {
-// 	response.status(200).json('This is where the database will be.');
-// });
-
 app.route('/comments').get(getComments).post(addComment);
+
+console.log(pool.options.connectionString);
