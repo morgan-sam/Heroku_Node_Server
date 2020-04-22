@@ -30,7 +30,7 @@ app.listen(process.env.PORT || 5000, () => {
 
 app.route('/comments').get(getComments).post(addComment);
 
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static('public'));
 app.get('/', function(request, response) {
 	response.sendFile('./index.html', { root: __dirname });
 });
