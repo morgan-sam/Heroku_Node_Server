@@ -9,7 +9,7 @@ async function displayComments() {
 	comments.forEach((el) => {
 		const jsDate = new Date(el.time).toString();
 		const formatDate = jsDate.split(' ').slice(0, 5).join(' ');
-		document.body.innerHTML += `${el.author}&emsp;${formatDate}:<br>${el.comment}`;
+		document.body.innerHTML += `${el.author}&emsp;${formatDate}:<br>${el.comment}<br><br>`;
 	});
 }
 displayComments();
