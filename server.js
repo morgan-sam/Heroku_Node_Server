@@ -8,6 +8,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
+app.use(express.static('public'));
 
 const getComments = (request, response) => {
 	pool.query('SELECT * FROM comments', (error, results) => {
@@ -30,7 +31,6 @@ app.listen(process.env.PORT || 5000, () => {
 
 app.route('/comments').get(getComments).post(addComment);
 
-app.use(express.static('public'));
 app.get('/', function(request, response) {
 	response.sendFile('./index.html', { root: __dirname });
 });
