@@ -31,5 +31,5 @@ app.listen(process.env.PORT || 5000, () => {
 app.route('/comments').get(getComments).post(addComment);
 
 app.route('/', (request, response) => {
-	response.sendFile('index.html');
+	response.sendFile('./index.html', { root: __dirname });
 });
