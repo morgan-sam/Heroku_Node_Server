@@ -14,16 +14,17 @@ async function displayComments() {
 }
 
 function addForms() {
-	document.body.innerHTML += `<form>
+	document.body.innerHTML += `<form onsubmit="event.preventDefault(); return postComment();" >
 	<label for="name">Name:</label><br>
 	<input type="text" id="name" name="name"><br>
 	<label for="comment">Comment:</label><br>
 	<input type="text" id="comment" name="comment">
+	<input type="submit" style="display: none" />
   	</form><br>`;
 	document.body.innerHTML += `<button type="button" onclick="postComment()">Add comment</button><br><br>`;
 }
 
-async function postComment() {
+async function postComment(e) {
 	const newComment = {
 		author: document.getElementById('name').value,
 		comment: document.getElementById('comment').value
