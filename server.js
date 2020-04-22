@@ -30,10 +30,12 @@ app.listen(process.env.PORT, () => {
 	console.log(`Server Listening on port ${process.env.PORT}\n`);
 });
 
-app.get('/', (request, response) => {
-	response.status(200).json('This is the server root.');
-});
+// app.get('/', (request, response) => {
+// 	response.status(200).json('This is the server root.');
+// });
 
-app.get('/comments', (request, response) => {
-	response.status(200).json('This is where the database will be.');
-});
+// app.get('/comments', (request, response) => {
+// 	response.status(200).json('This is where the database will be.');
+// });
+
+app.route('/comments').get(getComments).post(addComment);
